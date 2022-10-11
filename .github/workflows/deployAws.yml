@@ -15,8 +15,6 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SOURCE: "./"
           REMOTE_HOST: "ec2-3-86-35-53.compute-1.amazonaws.com"
           REMOTE_USER: "t6-victorhugobs"
           REMOTE_PORT: "80"
-          TARGET: "/home/t6-victorhugobs/"
