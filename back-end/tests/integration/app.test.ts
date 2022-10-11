@@ -28,18 +28,19 @@ describe('integration test', () => {
     const students = { students: [{ name: 'juvelina' }, { name: 'Frank' }, { name: 'Lelê' }] };
 
     await prisma.student.createMany({
-      data: {
-        students
-      },
+      data: students.students,
       skipDuplicates: true
     });
 
     const { status, body } = await agent.get('/students');
 
     expect(status).toBe(200);
-    expect(body).toEqual(students);
+    expect(body[0]).toMatchObject(expect.objectContaining({
+      id: expect.any(Number),
+      name: expect.any(String)
+    }));
 
-  })
+  });
 
 
 });
