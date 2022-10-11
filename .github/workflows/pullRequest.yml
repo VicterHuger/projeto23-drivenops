@@ -20,4 +20,4 @@ jobs:
       - name: Run tests
         run: docker-compose -f docker-compose-test.yml run node_random_student_picker npm run test
       - name: Build
-        run: npm i && npm run build
+        run: run node_random_student_picker npm i && npm run build
