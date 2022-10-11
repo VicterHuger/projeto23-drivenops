@@ -1,12 +1,12 @@
-name: EC2 AWS Deployement
+name: EC2AWSDeployement
 
 on: 
   push:
     branches:
       - main
-      
+
 jobs:
-  AWS Deploy:
+  AWSDeploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
