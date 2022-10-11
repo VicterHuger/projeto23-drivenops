@@ -23,4 +23,23 @@ describe('integration test', () => {
 
     expect(savedStudent).not.toBeNull();
   });
+
+  it('should get all the students and return status 200', async () => {
+    const students = { students: [{ name: 'juvelina' }, { name: 'Frank' }, { name: 'Lelê' }] };
+
+    await prisma.student.createMany({
+      data: {
+        students
+      },
+      skipDuplicates: true
+    });
+
+    const { status, body } = await agent.get('/students');
+
+    expect(status).toBe(200);
+    expect(body).toEqual(students);
+
+  })
+
+
 });
