@@ -15,6 +15,7 @@ jobs:
           envkey_POSTGRES_PASSWORD: ${{secrets.ENVKEY_POSTGRES_PASSWORD}}
           envkey_POSTGRES_DB: ${{secrets.ENVKEY_POSTGRES_DB}}
           envkey_DATABASE_URL: ${{secrets.ENVKEY_DATABASE_URL}}
+          directory: ${{ github.workspace }}/back-end
           file_name: ".env.test"
       - name: Run tests
         run: docker-compose -f docker-compose-test.yml run node_app_cli npm run test
