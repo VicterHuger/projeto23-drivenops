@@ -17,4 +17,3 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: "ec2-3-86-35-53.compute-1.amazonaws.com"
           REMOTE_USER: "t6-victorhugobs"
-          REMOTE_PORT: "80"
