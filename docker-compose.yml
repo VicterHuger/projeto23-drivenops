@@ -1,0 +1,46 @@
+services:
+  postgres_random_student_picker:
+    image: postgres
+    container_name: postgres_random_student_picker
+    restart: always
+    ports:
+      - 4427:5432
+    env_file:
+      - ./back-end/.env
+    volumes:
+      - pg_random_student_picker:/var/lib/postgresql/data
+
+  node_random_student_picker:
+    container_name: node_random_student_picker
+    build: ./back-end
+    image: node_random_student_picker_image
+    ports:
+      - 5000:5000
+    depends_on:
+      - postgres_random_student_picker
+    env_file:
+      - ./back-end/.env
+
+  react_random_student_picker:
+    container_name: react_random_student_picker
+    build: ./front-end
+    image: react_random_student_picker_image
+    volumes:
+      - build_react:/var/www/html
+
+  nginx_random_student_picker:
+    container_name: nginx_random_student_picker
+    build: ./nginx
+    image: nginx_random_student_picker_image
+    ports:
+      - 80:80
+    volumes:
+      - build_react:/var/www/html
+    depends_on:
+      - postgres_random_student_picker
+      - node_random_student_picker
+      - react_random_student_picker
+
+volumes:
+  pg_random_student_picker:
+  build_react:
