@@ -1,16 +1,16 @@
 import api from './api';
 
 export async function getStudents() {
-    const response = await api.get('/students');
-    return response;
+    const { data } = await api.get('/students');
+    return data;
 }
 
 export async function createStudents(body) {
-    const response = await api.post('/students', body);
-    return response;
+    const { data } = await api.post('/students', body);
+    return data;
 }
 
 export async function getStudentRandom() {
-    const response = await api.get('/students/random');
-    return response;
+    const { data } = await api.get('/students/random');
+    return data;
 }
