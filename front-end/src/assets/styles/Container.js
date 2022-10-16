@@ -11,7 +11,7 @@ export const Container = styled.div`
     align-items: center;
 
         button{
-            margin-top: 50px;
+            margin-top: 40px;
             border-radius:5px;
             display:flex;
             justify-content:center;
@@ -21,6 +21,7 @@ export const Container = styled.div`
             font-weight: bold;
             font-size: 1.5rem;
             cursor: pointer;
+            border: none;
         }
 
         h1{
