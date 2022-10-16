@@ -22,6 +22,7 @@ export const Container = styled.div`
             font-size: 1.5rem;
             cursor: pointer;
             border: none;
+            padding: 10px;
         }
 
         h1{
