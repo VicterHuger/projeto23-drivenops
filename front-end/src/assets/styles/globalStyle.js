@@ -28,6 +28,7 @@ time, mark, audio, video {
 }
 *{
     box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 a{
