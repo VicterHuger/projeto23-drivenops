@@ -1,28 +1,21 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import useRandomStudent from "../../hooks/api/useRandomStudent";
 
 export default function Home() {
 
-  const [student, setStudent] = useState(null);
+  const { loadingGettingRandomStudent, errorGettingRandomStudent, randomStudent } = useRandomStudent();
 
-  useEffect(() => {
-    async function fetchData() {
-      const API_URL = process.env.REACT_APP_BASE_URL;
-      try {
-        const response = await axios.get(`${API_URL}/students/random`);
-        const student = response.data;
-        if (!student) {
-          alert('Xablau! Não há estudantes cadastrados para o sorteio!');
-        } else {
-          setStudent(student);
-        }
-      } catch (error) {
-        alert('Não foi possível realizar o sorteio!');
-      }
-    }
-    fetchData()
-  }, []);
 
-  return student ? <h1>{student.name}</h1> : 'Carregando...';
+  if (errorGettingRandomStudent) return (<h1>Não foi possível realizar o sorteio!</h1>);
+
+  if ((loadingGettingRandomStudent && !randomStudent)) {
+    return (<h1>Carregando...</h1>);
+  }
+
+  return (
+    <>
+      {!randomStudent ? <h1>Xablau! Não há estudantes cadastrados para o sorteio!</h1> : <h1>{randomStudent.name} </h1>}
+    </>
+
+  )
 
 }
